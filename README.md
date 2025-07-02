@@ -2,7 +2,7 @@
 
 <p id="description">Tangerine is a lightweight and modern audio streaming player built for smooth SoundCloud playback. Designed with simplicity and performance in mind it brings your favorite music to life — no clutter just pure listening.</p>
 
-<p align="center"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Nothing-Just-a-Code/Tangerine-Player/main/.badges/downloads.json" alt="shields"/>  <img src="https://img.shields.io/github/v/release/Nothing-Just-a-Code/Tangerine-Player?display_name=release&amp;style=flat&amp;label=Latest%20Version" alt="shields"></p>
+<p align="center"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Nothing-Just-a-Code/Tangerine-Player/refs/heads/main/.badges/downloads.json" alt="shields"/>  <img src="https://img.shields.io/github/v/release/Nothing-Just-a-Code/Tangerine-Player?display_name=release&amp;style=flat&amp;label=Latest%20Version" alt="shields"></p>
 
 <h2>Project Screenshots:</h2>
 <img src="https://github.com/user-attachments/assets/7aad3ab2-134a-40d3-b46b-92d57b478097" width="500"/>
