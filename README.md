@@ -5,8 +5,11 @@
 <p align="center"><img src="https://img.shields.io/github/downloads/Nothing-Just-a-Code/Tangerine-Player/total?style=flat&amp;label=Total%20Downloads" alt="shields">  <img src="https://img.shields.io/github/v/release/Nothing-Just-a-Code/Tangerine-Player?display_name=release&amp;style=flat&amp;label=Latest%20Version" alt="shields"></p>
 
 <h2>Project Screenshots:</h2>
+<img src="https://github.com/user-attachments/assets/7aad3ab2-134a-40d3-b46b-92d57b478097" width="500"/>
+<img src="https://github.com/user-attachments/assets/f68d38a6-84c2-4d6f-86ac-036291ca5b91" width="500"/>
+<img src="https://github.com/user-attachments/assets/79d92eec-dfbd-42df-ac76-78f3ff17b63d" width="500"/>
 
-<img src="https://iili.io/FY39657.md.png" alt="project-screenshot" width="500" height="400/">  <img src="https://iili.io/FY39Pe9.md.png" alt="project-screenshot" width="500" height="400/">  <img src="https://iili.io/FY394JS.md.png" alt="project-screenshot" width="500" height="400/">
+
 
   
   
