@@ -15,7 +15,7 @@ jobs:
       - name: Get total downloads
         id: get_downloads
         run: |
-          curl -s "https://api.github.com/repos/OWNER/REPO/releases" > releases.json
+          curl -s "https://api.github.com/repos/Nothing-Just-a-Code/Tangerine-Player/releases" > releases.json
           TOTAL=$(jq '[.[] | .assets[]?.download_count] | add' releases.json)
           echo "total_downloads=$TOTAL" >> $GITHUB_ENV
 
