@@ -43,8 +43,14 @@ Once setup done. Run Tangerine.exe
 
 <h2>🍰 Contribution Guidelines:</h2>
 
-Thanks for considering contributing! ## Reporting Issues Please include: - OS version - Tangerine version - Steps to reproduce - Log if available
+Thanks for considering contributing!
+## Reporting Issues 
+Please include: 
+- OS version
+- Tangerine version
+- Steps to reproduce
+- Log if available
 
 <h2>🛡️ License:</h2>
 
-This project is licensed under the GPL-3.0
+<b>This project is licensed under the GPL-3.0</b>
