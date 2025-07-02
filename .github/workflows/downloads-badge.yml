@@ -27,7 +27,7 @@ jobs:
           cat <<EOF > .badges/downloads.json
           {
             "schemaVersion": 1,
-            "label": "downloads",
+            "label": "Downloads",
             "message": "${{ env.total_downloads }}",
             "color": "blue"
           }
