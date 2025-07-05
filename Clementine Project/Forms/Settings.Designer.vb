@@ -24,7 +24,6 @@ Partial Class Settings
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
-        Me.eqsts = New DevExpress.XtraEditors.ToggleSwitch()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.EqPre = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
@@ -36,11 +35,11 @@ Partial Class Settings
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.networkcache = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.eqsts = New DevExpress.XtraEditors.CheckEdit()
         Me.XtraScrollableControl1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
-        CType(Me.eqsts.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.EqPre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,6 +50,7 @@ Partial Class Settings
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         CType(Me.networkcache.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eqsts.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'XtraScrollableControl1
@@ -80,8 +80,8 @@ Partial Class Settings
         'GroupControl3
         '
         Me.GroupControl3.CaptionImageOptions.Image = CType(resources.GetObject("GroupControl3.CaptionImageOptions.Image"), System.Drawing.Image)
-        Me.GroupControl3.Controls.Add(Me.LabelControl5)
         Me.GroupControl3.Controls.Add(Me.eqsts)
+        Me.GroupControl3.Controls.Add(Me.LabelControl5)
         Me.GroupControl3.Controls.Add(Me.PanelControl1)
         Me.GroupControl3.Location = New System.Drawing.Point(12, 265)
         Me.GroupControl3.Name = "GroupControl3"
@@ -96,15 +96,6 @@ Partial Class Settings
         Me.LabelControl5.Size = New System.Drawing.Size(32, 13)
         Me.LabelControl5.TabIndex = 6
         Me.LabelControl5.Text = "Status"
-        '
-        'eqsts
-        '
-        Me.eqsts.Location = New System.Drawing.Point(53, 41)
-        Me.eqsts.Name = "eqsts"
-        Me.eqsts.Properties.OffText = "Off"
-        Me.eqsts.Properties.OnText = "On"
-        Me.eqsts.Size = New System.Drawing.Size(95, 24)
-        Me.eqsts.TabIndex = 5
         '
         'PanelControl1
         '
@@ -218,6 +209,14 @@ Partial Class Settings
         Me.LabelControl3.TabIndex = 4
         Me.LabelControl3.Text = "Network Caching"
         '
+        'eqsts
+        '
+        Me.eqsts.Location = New System.Drawing.Point(50, 42)
+        Me.eqsts.Name = "eqsts"
+        Me.eqsts.Properties.Caption = "Enable"
+        Me.eqsts.Size = New System.Drawing.Size(75, 22)
+        Me.eqsts.TabIndex = 4
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -236,7 +235,6 @@ Partial Class Settings
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
         Me.GroupControl3.PerformLayout()
-        CType(Me.eqsts.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
@@ -250,6 +248,7 @@ Partial Class Settings
         Me.GroupControl2.ResumeLayout(False)
         Me.GroupControl2.PerformLayout()
         CType(Me.networkcache.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eqsts.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -268,6 +267,6 @@ Partial Class Settings
     Friend WithEvents EqPre As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents eqsts As DevExpress.XtraEditors.ToggleSwitch
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents eqsts As DevExpress.XtraEditors.CheckEdit
 End Class

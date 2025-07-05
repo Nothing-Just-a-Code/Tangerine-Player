@@ -37,32 +37,34 @@ Public Class Settings
     End Sub
 
     Private Async Function ReadSettings() As Task
-        Await Task.Run(Sub()
+        Await Task.Run(Async Sub()
                            'audio delay
-                           audiodelaytime.Value = CInt(CType(Me.Owner, MainForm).MP.AudioDelay \ 1000)
+                           If audiodelaytime IsNot Nothing Then audiodelaytime.Value = CInt(CType(Me.Owner, MainForm).MP.AudioDelay \ 1000)
 
                            'channel output
                            Select Case CType(Me.Owner, MainForm).MP.Channel
                                Case AudioOutputChannel.Dolbys
-                                   channelOut.SelectedIndex = 4
+                                   If channelOut IsNot Nothing Then channelOut.SelectedIndex = 4
                                Case AudioOutputChannel.Error
                                    MBox("Invalid Channel Output", "There is an error in channel output. Please check logs for more information.", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                Case AudioOutputChannel.Left
-                                   channelOut.SelectedIndex = 2
+                                   If channelOut IsNot Nothing Then channelOut.SelectedIndex = 2
                                Case AudioOutputChannel.Right
-                                   channelOut.SelectedIndex = 3
+                                   If channelOut IsNot Nothing Then channelOut.SelectedIndex = 3
                                Case AudioOutputChannel.RStereo
-                                   channelOut.SelectedIndex = 1
+                                   If channelOut IsNot Nothing Then channelOut.SelectedIndex = 1
                                Case AudioOutputChannel.Stereo
-                                   channelOut.SelectedIndex = 0
+                                   If channelOut IsNot Nothing Then channelOut.SelectedIndex = 0
                            End Select
 
+
                            'network caching
-                           networkcache.SelectedIndex = TConfig.Caching
+                           If networkcache IsNot Nothing Then networkcache.SelectedIndex = TConfig.Caching
 
                            'Equalizer
-                           eqsts.IsOn = TConfig.EnableEqualizer
-                           GetEQ()
+                           If EqPre IsNot Nothing Then GetEQ()
+                           Await Task.Delay(300)
+                           If eqsts IsNot Nothing Then eqsts.Checked = TConfig.EnableEqualizer
                            PanelControl1.Enabled = TConfig.EnableEqualizer
                        End Sub)
     End Function
@@ -160,45 +162,15 @@ Public Class Settings
     End Sub
 
     Private Sub GetEQ()
+        If InvokeRequired Then
+            Invoke(New MethodInvoker(Sub() GetEQ()))
+            Return
+        End If
         If Not EqPre.Properties.Items.Count = 0 Then EqPre.Properties.Items.Clear()
         For i As Integer = 0 To EqL.PresetCount - 1
             If Not IsEmpty(EqL.PresetName(i)) Then EqPre.Properties.Items.Add(EqL.PresetName(i))
         Next
         If TConfig.EnableEqualizer Then EqPre.SelectedIndex = TConfig.Equalizer
-    End Sub
-
-    Private Async Sub eqsts_Toggled(sender As Object, e As EventArgs) Handles eqsts.Toggled
-        If IsReady Then
-            Select Case eqsts.IsOn
-                Case True
-                    PanelControl1.Enabled = True
-                    eqsts.Enabled = False
-                    TConfig.EnableEqualizer = True
-                    If EqL IsNot Nothing Then EqL.Dispose()
-                    If EqPre.SelectedItem Is Nothing Or EqPre.SelectedIndex = -1 Then EqPre.SelectedIndex = TConfig.Equalizer
-                    EqL = New Equalizer(EqPre.SelectedIndex)
-                    Dim result = Await SetEqualizer(EqL)
-                    If result = True Then
-                        TConfig.Equalizer = EqPre.SelectedIndex
-                        Await SaveConfig()
-                    Else
-                        MBox("Error", "There is an error while changing equalizer. Please check logs for more information.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                    EqPre.Enabled = True
-                    eqsts.Enabled = True
-                Case False
-                    PanelControl1.Enabled = False
-                    eqsts.Enabled = False
-                    Dim result = Await DisableEqualizer()
-                    If result = True Then
-                        Await SaveConfig()
-                        TConfig.EnableEqualizer = False
-                    Else
-                        MBox("Error", "Cannot disable the equalizer. Please check logs for more information.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                    eqsts.Enabled = True
-            End Select
-        End If
     End Sub
 
     Private Async Sub EqPre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles EqPre.SelectedIndexChanged
@@ -228,4 +200,44 @@ Public Class Settings
                                   Return CType(Me.Owner, MainForm).MP?.UnsetEqualizer()
                               End Function)
     End Function
+
+    Private Async Sub eqsts_CheckedChanged(sender As Object, e As EventArgs) Handles eqsts.CheckedChanged
+        If InvokeRequired Then
+            Invoke(New EventHandler(AddressOf eqsts_CheckedChanged), New Object() {sender, e})
+            Return
+        End If
+        If IsReady AndAlso eqsts IsNot Nothing Then
+            Select Case eqsts.CheckState
+                Case CheckState.Checked
+                    PanelControl1.Enabled = True
+                    eqsts.Enabled = False
+                    TConfig.EnableEqualizer = True
+                    If EqL IsNot Nothing Then EqL.Dispose()
+                    If EqPre.SelectedItem Is Nothing Or EqPre.SelectedIndex = -1 Then EqPre.SelectedIndex = TConfig.Equalizer
+                    EqL = New Equalizer(EqPre.SelectedIndex)
+                    Dim result = Await SetEqualizer(EqL)
+                    If result = True Then
+                        TConfig.Equalizer = EqPre.SelectedIndex
+                        Await SaveConfig()
+                        MsgBox("saved")
+                    Else
+                        MBox("Error", "There is an error while changing equalizer. Please check logs for more information.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                    EqPre.Enabled = True
+                    eqsts.Enabled = True
+                Case CheckState.Unchecked
+                    PanelControl1.Enabled = False
+                    eqsts.Enabled = False
+                    Dim result = Await DisableEqualizer()
+                    If result = True Then
+                        TConfig.EnableEqualizer = False
+                        Await SaveConfig()
+                        MsgBox("saved")
+                    Else
+                        MBox("Error", "Cannot disable the equalizer. Please check logs for more information.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                    eqsts.Enabled = True
+            End Select
+        End If
+    End Sub
 End Class
