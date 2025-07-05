@@ -908,4 +908,12 @@ Public Class MainForm
         SongDur.Text = "00:00:00"
         CurSong.Text = "..."
     End Sub
+
+    Private Sub MainForm_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.S Then FlyoutPanel1.ShowPopup(False)
+    End Sub
+
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        If FlyoutPanel1.IsPopupOpen Then FlyoutPanel1.HidePopup(False)
+    End Sub
 End Class

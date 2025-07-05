@@ -80,6 +80,9 @@ Partial Class MainForm
         Me.StartupLoader = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
+        Me.FlyoutPanel1 = New DevExpress.Utils.FlyoutPanel()
+        Me.FlyoutPanelControl1 = New DevExpress.Utils.FlyoutPanelControl()
+        Me.SearchControl1 = New DevExpress.XtraEditors.SearchControl()
         Me.searchtrack = New DevExpress.XtraEditors.TextEdit()
         Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
@@ -96,6 +99,7 @@ Partial Class MainForm
         Me.SongLenLbl = New DevExpress.XtraEditors.LabelControl()
         Me.songlen = New DevExpress.XtraEditors.TrackBarControl()
         Me.ImageCollection2 = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.searchtracks_lst, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,6 +115,11 @@ Partial Class MainForm
         Me.XtraTabPage1.SuspendLayout()
         Me.XtraTabPage2.SuspendLayout()
         Me.XtraTabPage3.SuspendLayout()
+        CType(Me.FlyoutPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlyoutPanel1.SuspendLayout()
+        CType(Me.FlyoutPanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlyoutPanelControl1.SuspendLayout()
+        CType(Me.SearchControl1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.searchtrack.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MusicPanel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -578,11 +587,47 @@ Partial Class MainForm
         '
         'XtraTabPage3
         '
+        Me.XtraTabPage3.Controls.Add(Me.FlyoutPanel1)
         Me.XtraTabPage3.Controls.Add(Me.searchtracks_lst)
         Me.XtraTabPage3.Controls.Add(Me.searchtrack)
         Me.XtraTabPage3.Name = "XtraTabPage3"
         Me.XtraTabPage3.Size = New System.Drawing.Size(958, 510)
         Me.XtraTabPage3.Text = "Search"
+        '
+        'FlyoutPanel1
+        '
+        Me.FlyoutPanel1.Controls.Add(Me.FlyoutPanelControl1)
+        Me.FlyoutPanel1.Location = New System.Drawing.Point(100, 34)
+        Me.FlyoutPanel1.Name = "FlyoutPanel1"
+        Me.FlyoutPanel1.OwnerControl = Me.searchtracks_lst
+        Me.FlyoutPanel1.Size = New System.Drawing.Size(734, 39)
+        Me.FlyoutPanel1.TabIndex = 3
+        '
+        'FlyoutPanelControl1
+        '
+        Me.FlyoutPanelControl1.AutoSize = True
+        Me.FlyoutPanelControl1.Controls.Add(Me.SimpleButton1)
+        Me.FlyoutPanelControl1.Controls.Add(Me.SearchControl1)
+        Me.FlyoutPanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlyoutPanelControl1.FlyoutPanel = Me.FlyoutPanel1
+        Me.FlyoutPanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.FlyoutPanelControl1.Name = "FlyoutPanelControl1"
+        Me.FlyoutPanelControl1.Size = New System.Drawing.Size(734, 39)
+        Me.FlyoutPanelControl1.TabIndex = 0
+        '
+        'SearchControl1
+        '
+        Me.SearchControl1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SearchControl1.Client = Me.searchtracks_lst
+        Me.SearchControl1.Location = New System.Drawing.Point(5, 5)
+        Me.SearchControl1.MenuManager = Me.BarManager1
+        Me.SearchControl1.Name = "SearchControl1"
+        Me.SearchControl1.Properties.AutoHeight = False
+        Me.SearchControl1.Properties.BeepOnError = False
+        Me.SearchControl1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Repository.ClearButton(), New DevExpress.XtraEditors.Repository.SearchButton()})
+        Me.SearchControl1.Properties.Client = Me.searchtracks_lst
+        Me.SearchControl1.Size = New System.Drawing.Size(670, 28)
+        Me.SearchControl1.TabIndex = 0
         '
         'searchtrack
         '
@@ -787,6 +832,15 @@ Partial Class MainForm
         Me.ImageCollection2.Images.SetKeyName(3, "warning")
         Me.ImageCollection2.Images.SetKeyName(4, "success")
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.SimpleButton1.ImageOptions.Image = CType(resources.GetObject("SimpleButton1.ImageOptions.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(703, 6)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(26, 26)
+        Me.SimpleButton1.TabIndex = 1
+        '
         'MainForm
         '
         Me.ActiveGlowColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(157, Byte), Integer), CType(CType(58, Byte), Integer))
@@ -803,6 +857,7 @@ Partial Class MainForm
         Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow
         Me.IconOptions.Image = CType(resources.GetObject("MainForm.IconOptions.Image"), System.Drawing.Image)
         Me.InactiveGlowColor = System.Drawing.Color.Gray
+        Me.KeyPreview = True
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tangerine Player"
@@ -821,6 +876,12 @@ Partial Class MainForm
         Me.XtraTabPage1.ResumeLayout(False)
         Me.XtraTabPage2.ResumeLayout(False)
         Me.XtraTabPage3.ResumeLayout(False)
+        CType(Me.FlyoutPanel1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlyoutPanel1.ResumeLayout(False)
+        Me.FlyoutPanel1.PerformLayout()
+        CType(Me.FlyoutPanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlyoutPanelControl1.ResumeLayout(False)
+        CType(Me.SearchControl1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.searchtrack.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MusicPanel, System.ComponentModel.ISupportInitialize).EndInit()
@@ -900,4 +961,8 @@ Partial Class MainForm
     Friend WithEvents chkforupdate As DevExpress.XtraBars.BarSubItem
     Friend WithEvents bugreport As DevExpress.XtraBars.BarSubItem
     Friend WithEvents creds As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents FlyoutPanel1 As DevExpress.Utils.FlyoutPanel
+    Friend WithEvents FlyoutPanelControl1 As DevExpress.Utils.FlyoutPanelControl
+    Friend WithEvents SearchControl1 As DevExpress.XtraEditors.SearchControl
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
 End Class
