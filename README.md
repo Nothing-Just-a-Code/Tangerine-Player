@@ -1,5 +1,6 @@
 <h1 align="center" id="title">Tangerine Player <img src="https://iili.io/FY34bV9.png" width="48" height="48"></img></h1>
 
+## Tangerine Player has been discontinued. Please use [Apollo Music Player](https://github.com/Nothing-Just-a-Code/Apollo) for the latest updates 
 <p id="description">Tangerine is a lightweight and modern audio streaming player built for smooth SoundCloud playback. Designed with simplicity and performance in mind it brings your favorite music to life — no clutter just pure listening.</p>
 
 <p align="center"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Nothing-Just-a-Code/Tangerine-Player/refs/heads/main/.badges/downloads.json" alt="shields"/>  <img src="https://img.shields.io/github/v/release/Nothing-Just-a-Code/Tangerine-Player?display_name=release&amp;style=flat&amp;label=Latest%20Version" alt="shields"></p>
